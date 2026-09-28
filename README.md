@@ -24,7 +24,7 @@
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-用 Chrome 或 Edge 打开 <http://127.0.0.1:8765/>。macOS 也可双击 `start.command`。程序无需构建和第三方运行依赖。WebUSB 的设备选择框须由用户在网页上点击「连接 X-T30 II」后打开。
+用 Chrome 或 Edge 打开 <http://127.0.0.1:8765/>。macOS 也可在终端运行 `zsh start.command`，由脚本启动服务并打开浏览器。程序无需构建和第三方运行依赖。WebUSB 的设备选择框须由用户在网页上点击「连接 X-T30 II」后打开。
 
 ## 使用
 
