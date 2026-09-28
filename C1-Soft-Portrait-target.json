@@ -1,0 +1,18 @@
+{
+  "slot": "C1",
+  "name": "Soft Portrait",
+  "description": "ASTIA 柔和人像示例。仅填入列出的画质参数，保留当前 C1 的动态范围优先、动态范围、高光与阴影。",
+  "recipe": {
+    "film": 3,
+    "grain": 1,
+    "chrome": 1,
+    "blueChrome": 1,
+    "whiteBalance": 2,
+    "whiteBalanceRed": 1,
+    "whiteBalanceBlue": -1,
+    "color": 0,
+    "sharpness": -1,
+    "highIsoNR": 0,
+    "clarity": 0
+  }
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>富士 X-T30 II · 胶片配方仪表盘</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="eyebrow">FUJIFILM X-T30 II · USB</div>
+      <h1>胶片配方仪表盘</h1>
+      <p>在电脑上查看并调整 C1–C7。连接相机、保存备份、选好档位，然后写入。无需 RAW 样片。</p>
+      <div id="connectionBadge" class="connection-badge">● 未连接</div>
+    </header>
+
+    <main>
+      <section class="card setup-card" aria-labelledby="setupTitle">
+        <div class="section-header"><span class="section-number">01</span><div><h2 id="setupTitle">连接与备份</h2><p>相机保持开机，连接模式设为「USB RAW转换/备份恢复」。请在 Chrome 或 Edge 中使用。</p></div></div>
+        <div class="actions">
+          <button id="connectButton" class="button primary">连接 X-T30 II</button>
+          <button id="scanButton" class="button" disabled>读取 C1–C7</button>
+          <button id="backupButton" class="button" disabled>下载原始设置备份</button>
+          <button id="disconnectButton" class="button quiet" disabled>断开</button>
+        </div>
+        <div class="device-line" id="deviceLine">尚未连接相机。</div>
+        <div class="slot-overview" id="slotOverview" aria-live="polite"></div>
+      </section>
+
+      <section class="card editor-card" aria-labelledby="editorTitle">
+        <div class="section-header"><span class="section-number">02</span><div><h2 id="editorTitle">调整配方</h2><p>先选要覆盖的 C 档。每个滑杆都是相机菜单里的实际数值。</p></div></div>
+        <div class="target-row">
+          <label class="field-inline" for="targetSlot">写入位置 <select id="targetSlot" disabled><option value="">读取后选择</option></select></label>
+          <div id="slotName" class="slot-name">未选择档位</div>
+        </div>
+        <label class="field slot-name-field" for="newSlotName"><span>C 档名称（可选）</span><input id="newSlotName" type="text" maxlength="25" pattern="[A-Za-z0-9 _-]{0,25}" placeholder="例如 Soft Portrait" autocomplete="off" spellcheck="false" disabled></label>
+        <p class="name-hint">最多 25 个字符；使用英文字母、数字、空格、- 或 _。改名与配方请分两次写入：改名后重新读取、备份，再调配方。未命名不表示 C 档没有已保存设置。</p>
+        <button id="presetSoftPortrait" class="button" type="button" disabled>套用 C1「柔和人像」示例</button>
+        <form id="recipeForm" class="recipe-form" autocomplete="off">
+          <fieldset disabled id="recipeFields">
+            <div class="field-grid">
+              <label class="field"><span>胶片模拟</span><select name="film" id="film"></select></label>
+              <label class="field"><span>动态范围</span><select name="dynamicRange" id="dynamicRange"></select></label>
+              <label class="field"><span>动态范围优先</span><select name="priority" id="priority"></select></label>
+              <label class="field"><span>白平衡</span><select name="whiteBalance" id="whiteBalance"></select></label>
+            </div>
+            <div class="field-grid secondary-grid">
+              <label class="field"><span>色温</span><div class="unit-input"><input name="kelvin" id="kelvin" type="number" min="2500" max="10000" step="10"><span>K</span></div></label>
+              <label class="field"><span>颗粒效果</span><select name="grain" id="grain"></select></label>
+              <label class="field color-only"><span>色彩效果</span><select name="chrome" id="chrome"></select></label>
+              <label class="field color-only"><span>蓝色彩效果</span><select name="blueChrome" id="blueChrome"></select></label>
+            </div>
+            <div class="sliders" id="sliders"></div>
+          </fieldset>
+        </form>
+        <div id="dependencyNote" class="hint">选择一个 C 档后显示可调整的参数。</div>
+      </section>
+
+      <section class="card preview-card" aria-labelledby="previewTitle">
+        <div class="section-header"><span class="section-number">↳</span><div><h2 id="previewTitle">参考图预览</h2><p>调整上方参数时，右侧照片会实时更新，方便比较大致色调。</p></div></div>
+        <div class="preview-toolbar">
+          <label class="preview-file-label" for="previewFile">换成自己的照片 <input id="previewFile" type="file" accept="image/*"></label>
+          <button id="previewReset" class="button quiet" type="button">恢复参考图</button>
+          <span id="previewSource" class="preview-source">默认参考图</span>
+        </div>
+        <div class="preview-grid">
+          <figure class="preview-figure"><figcaption>原图</figcaption><canvas id="previewBefore" role="img" aria-label="未经调整的参考照片"></canvas></figure>
+          <figure class="preview-figure"><figcaption>调整后</figcaption><canvas id="previewAfter" role="img" aria-label="模拟当前配方效果的参考照片"></canvas></figure>
+        </div>
+        <p id="previewStatus" class="preview-status" role="status" aria-live="polite">正在加载参考图…</p>
+        <p class="preview-caveat">电脑近似预览，实际效果以相机成片为准。</p>
+      </section>
+
+      <section class="card write-card" aria-labelledby="writeTitle">
+        <div class="section-header"><span class="section-number">03</span><div><h2 id="writeTitle">写入相机</h2><p>逐项写入并立即回读；相机若自动更改参数，会按目标值修正。最后核对整个 C 档。</p></div></div>
+        <div id="changeSummary" class="change-summary">暂无待写入的变更。</div>
+        <label class="confirm-row"><input id="confirmOverwrite" type="checkbox" disabled><span id="confirmLabel">我已保存备份，并确认覆盖所选 C 档</span></label>
+        <button id="writeButton" class="button write-button" disabled>写入所选 C 档</button>
+        <p class="footnote">写入期间保持相机开机、USB 线连接，不要同时打开 X RAW STUDIO、照片或图像捕捉。</p>
+      </section>
+
+      <section class="card status-card" aria-labelledby="statusTitle">
+        <div class="section-header compact"><span class="section-number">↳</span><div><h2 id="statusTitle">操作状态</h2></div></div>
+        <div id="status" role="status" aria-live="polite">准备就绪。请连接相机。</div>
+        <ol id="log" class="log"></ol>
+      </section>
+    </main>
+    <footer>本页面只在本机运行。备份文件保存在浏览器的下载目录。<a href="./README.md" target="_blank" rel="noopener">使用说明</a> · <a href="./camera-guide.html" target="_blank" rel="noopener">机身 C1–C7 使用方法</a></footer>
+  </div>
+</body>
+</html>
