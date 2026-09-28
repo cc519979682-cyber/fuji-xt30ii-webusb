@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+private/
+downloads/
+XT30II-*.json
+*backup*.json
+*.RAF
+*.raf
+*.JPG
+*.jpg
+*.JPEG
+*.jpeg
+*.HEIC
+*.heic
