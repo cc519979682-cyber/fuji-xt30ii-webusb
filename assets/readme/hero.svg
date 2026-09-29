@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
+  <title id="title">X-T30 II WebUSB 胶片配方仪表盘</title>
+  <desc id="desc">以软件中的 C1 至 C7 档位和读取、备份、预览、核对写入流程为原型绘制的界面示意。</desc>
+
+  <rect width="1200" height="390" rx="26" fill="#eef3f2"/>
+  <path d="M0 365H1200" stroke="#d8e4df"/>
+  <g id="title-block" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="58" y="67" fill="#176950" font-size="18" font-weight="700" letter-spacing="2">X-T30 II  /  WEBUSB</text>
+    <text x="58" y="149" fill="#103d3c" font-size="59" font-weight="700">胶片配方</text>
+    <text x="58" y="214" fill="#103d3c" font-size="44" font-weight="600">浏览器工作台</text>
+    <path d="M58 253H500" stroke="#b9d0c8" stroke-width="2"/>
+    <text x="58" y="291" fill="#3c5a51" font-size="21">读取 · 备份 · 近似预览</text>
+    <text x="58" y="325" fill="#3c5a51" font-size="21">核对后写入 C1–C7</text>
+  </g>
+
+  <g id="slot-interface" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="590" y="43" width="552" height="304" rx="22" fill="#ffffff" stroke="#d8e4df"/>
+    <text x="623" y="87" fill="#688079" font-size="18" font-weight="700">自定义画质设置</text>
+    <text x="1109" y="87" fill="#688079" font-size="18" text-anchor="end">C1–C7</text>
+
+    <g font-size="23" font-weight="700" text-anchor="middle">
+      <rect x="623" y="111" width="64" height="66" rx="11" fill="#176950"/>
+      <text x="655" y="154" fill="#ffffff">C1</text>
+      <rect x="693" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="725" y="154" fill="#216653">C2</text>
+      <rect x="763" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="795" y="154" fill="#216653">C3</text>
+      <rect x="833" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="865" y="154" fill="#216653">C4</text>
+      <rect x="903" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="935" y="154" fill="#216653">C5</text>
+      <rect x="973" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="1005" y="154" fill="#216653">C6</text>
+      <rect x="1043" y="111" width="64" height="66" rx="11" fill="#e7f1ed"/>
+      <text x="1075" y="154" fill="#216653">C7</text>
+    </g>
+
+    <path d="M623 209H1109" stroke="#d8e4df"/>
+    <g fill="#216653" font-size="19" font-weight="600">
+      <text x="623" y="255">USB 连接</text>
+      <text x="755" y="255">读取</text>
+      <text x="855" y="255">备份</text>
+      <text x="955" y="255">调整</text>
+      <text x="1055" y="255">核对</text>
+    </g>
+    <g stroke="#7da99a" stroke-width="2" fill="none">
+      <path d="M726 248h18m-7-7 7 7-7 7"/>
+      <path d="M828 248h17m-7-7 7 7-7 7"/>
+      <path d="M928 248h17m-7-7 7 7-7 7"/>
+      <path d="M1028 248h17m-7-7 7 7-7 7"/>
+    </g>
+    <rect x="623" y="280" width="486" height="41" rx="9" fill="#f3f7f4"/>
+    <text x="640" y="307" fill="#516b62" font-size="18">本地运行 · 写入前先备份 · 预览为近似模拟</text>
+  </g>
+</svg>
